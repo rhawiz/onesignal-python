@@ -139,7 +139,7 @@ class Notification():
     def ios_badge_count(self, value):
         self._ios_badge_count = int(value)
 
-    def __init__(self, app_id, mode=SEGMENTS_MODE):
+    def __init__(self, app_id, contents, subtitle, headings, mode=SEGMENTS_MODE):
         self.app_id = app_id
         self.mode = mode
 
@@ -147,10 +147,10 @@ class Notification():
         self._include_player_ids = []
 
         # Common defaults
-        self.contents = {'en': 'Default message.'}
+        self.contents = contents
         self.content_available = False
-        self.headings = {}
-        self.subtitle = {}
+        self.headings = headings
+        self.subtitle = subtitle
         self.data = {}
         self.small_icon = None
         self.large_icon = None
