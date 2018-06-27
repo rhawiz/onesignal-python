@@ -182,7 +182,9 @@ class Notification():
             'app_id': self.app_id,
             # Should change when template/content_available support be done
             'contents': self.contents,
-            'content_available': self.content_available
+            'content_available': self.content_available,
+            'buttons': [{"id": "id1", "text": "button1", "icon": "ic_menu_share"},
+                        {"id": "id2", "text": "button2", "icon": "ic_menu_send"}]
         }
 
         # Mode related settings
