@@ -139,7 +139,7 @@ class Notification():
     def ios_badge_count(self, value):
         self._ios_badge_count = int(value)
 
-    def __init__(self, app_id, contents, subtitle, headings, mode=SEGMENTS_MODE):
+    def __init__(self, app_id, contents, subtitle, headings, buttons=None, mode=SEGMENTS_MODE):
         self.app_id = app_id
         self.mode = mode
 
@@ -151,6 +151,7 @@ class Notification():
         self.content_available = False
         self.headings = headings
         self.subtitle = subtitle
+        self.buttons = buttons
         self.data = {}
         self.small_icon = None
         self.large_icon = None
@@ -182,11 +183,11 @@ class Notification():
             'app_id': self.app_id,
             # Should change when template/content_available support be done
             'contents': self.contents,
-            'content_available': self.content_available,
-            'buttons': [{"id": "id1", "text": "button1", "icon": "ic_menu_share"},
-                        {"id": "id2", "text": "button2", "icon": "ic_menu_send"}]
+            'content_available': self.content_available
         }
 
+        if self.buttons:
+            payload['buttons'] = self.buttons
         # Mode related settings
         if self.mode == self.DEVICES_MODE:
             payload.update({'include_player_ids': self.include_player_ids})
